@@ -14,5 +14,8 @@
     <fullyQualifiedTypeName name="java.lang.reflect.Method"/>
     <fullyQualifiedTypeName name="java.lang.reflect.Field"/>
     <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="br.unisal.modelagem.Situacao"/>
+    <fullyQualifiedTypeName name="br.unisal.modelagem.UnidadeMedida"/>
+    <fullyQualifiedTypeName name="br.unisal.modelagem.Produto"/>
     <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
 </qualifiedTypeNameHistroy>

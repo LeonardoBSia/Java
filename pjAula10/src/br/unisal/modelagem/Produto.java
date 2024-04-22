@@ -58,6 +58,11 @@ public class Produto {
 	public void setLocalizacao(String localizacao) {
 		this.localizacao = localizacao;
 	}
-		
+		@Override 
+		public String toString() {
+			return "Código: " + getCodigo() + " Descricao: " + getDescricao() + " UnidadeMedida: " + getUn().getDescricao()
+					+ " Largura " + getLargura() + " Comprimento: " + getComprimento() + " Situação: " + getSituacao()
+					+ " Localização: " + getLocalizacao();
+		}
 	
 }

@@ -25,12 +25,12 @@ public class frmProduto extends JFrame implements ActionListener{
 	JTextField txtCodigo, txtDescricao, txtLargura, txtComprimento, txtLocalizacao;
 	JComboBox cbxUnidadeMedida, cbxSituacao;
 	JPanel pnCampos, pnBotoes;
-	JButton btnInclui, btnExclui, btnAltera, btnPesquisa;
+	JButton btnInclui, btnExclui, btnAltera, btnPesquisa, btnLimpa;
 	List<Produto>bdProduto = new ArrayList<Produto>();
 	
 	public frmProduto(){
 		super("Cadastro de Produto");
-		setSize(400, 250);
+		setSize(500, 250);
 		setLayout (new BorderLayout());
 		
 		//2 Passo Construir os obejtos
@@ -54,6 +54,7 @@ public class frmProduto extends JFrame implements ActionListener{
 		btnAltera = new JButton ("Alterar");
 		btnExclui = new JButton ("Excluir");
 		btnPesquisa = new JButton ("Pesquisar");
+		btnLimpa = new JButton ("Limpar");
 		
 		pnCampos = new JPanel (new GridLayout (7,2));
 		pnBotoes = new JPanel (new GridLayout (1,4));
@@ -84,6 +85,7 @@ public class frmProduto extends JFrame implements ActionListener{
 		pnBotoes.add(btnAltera);
 		pnBotoes.add(btnExclui);
 		pnBotoes.add(btnPesquisa);
+		pnBotoes.add(btnLimpa);
 		
 		add(pnBotoes, BorderLayout.SOUTH);
 		
@@ -92,21 +94,47 @@ public class frmProduto extends JFrame implements ActionListener{
 		btnAltera.addActionListener(this);
 		btnExclui.addActionListener(this);
 		btnPesquisa.addActionListener(this);
+		btnLimpa.addActionListener(this);
 		
 		setVisible(true);
 		
 	}
 	public void actionPerformed(ActionEvent e) {
 		 if(e.getSource() == btnInclui) {
-			bdProduto.add(instanciar());
+			 Produto p= instanciar();
+			 if(p != null) {
+				 bdProduto.add(p);
 			 }
+			}
 		 if(e.getSource() == btnAltera) {
 			 for(Produto p : bdProduto) {
 				 if(p.getCodigo()== p.getCodigo()) {
-					 p = instanciar();
+					 Produto objeto = instanciar();
+					 if(objeto != null) {
+						 p = objeto;
+					 }
+
+
 				 }
 			 }
-		 }
+
+			 
+					
+				}else {
+					if (e.getSource()==btnLimpa){ //pressionado btLimpar
+		 
+						txtCodigo.setText("");
+						txtDescricao.setText("");	
+						txtLargura.setText("");
+						txtComprimento.setText("");
+						txtLocalizacao.setText("");
+						//TODO
+						//comando para dar foco ao objeto
+						txtCodigo.requestFocus();
+						
+			 }
+				}
+				
 		 System.out.println(bdProduto);
 		 }
 	
@@ -117,6 +145,8 @@ public class frmProduto extends JFrame implements ActionListener{
 		p.setCodigo(Integer.parseInt(txtCodigo.getText()));
 	}catch (NumberFormatException e) {
 		JOptionPane.showMessageDialog(null, "Código do Produto Inválido", "Validação", JOptionPane.ERROR_MESSAGE);
+		
+		return null;
 		}
 		p.setDescricao(txtDescricao.getText());
 		p.setUn(UnidadeMedida.values()[
@@ -125,18 +155,23 @@ public class frmProduto extends JFrame implements ActionListener{
 		p.setLargura(Integer.parseInt(txtLargura.getText()));
 	}catch (NumberFormatException e) {
 		JOptionPane.showMessageDialog(null, "Largura do Produto Inválido", "Validação", JOptionPane.ERROR_MESSAGE);
+		
+		return null;
 	}
 	
 	try {
 		p.setComprimento(Integer.parseInt(txtComprimento.getText()));
 	}catch (NumberFormatException e) {
 		JOptionPane.showMessageDialog(null, "Comprimento do Produto Inválido", "Validação", JOptionPane.ERROR_MESSAGE);
+		
+		return null;
 	}
 	p.setSituacao(Situacao.values()[cbxSituacao.getSelectedIndex()]);
 	p.setLocalizacao(txtLocalizacao.getText());
 	return p;
 	
 }
+	
 
 	public static void main(String[] args) {
 		frmProduto frm = new frmProduto();
