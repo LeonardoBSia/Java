@@ -17,5 +17,7 @@
     <fullyQualifiedTypeName name="br.unisal.modelagem.Situacao"/>
     <fullyQualifiedTypeName name="br.unisal.modelagem.UnidadeMedida"/>
     <fullyQualifiedTypeName name="br.unisal.modelagem.Produto"/>
+    <fullyQualifiedTypeName name="pjAula12.frmCliente"/>
     <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
 </qualifiedTypeNameHistroy>
